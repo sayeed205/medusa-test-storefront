@@ -15,7 +15,7 @@ export default async function CheckoutForm() {
   const cartId = cookies().get("_medusa_cart_id")?.value
 
   if (!cartId) {
-    return null
+    return <div></div>
   }
 
   // create payment sessions and get cart
@@ -24,7 +24,7 @@ export default async function CheckoutForm() {
   )) as CartWithCheckoutStep
 
   if (!cart) {
-    return null
+    return <div></div>
   }
 
   cart.checkout_step = cart && getCheckoutStep(cart)
@@ -35,7 +35,7 @@ export default async function CheckoutForm() {
   )
 
   if (!availableShippingMethods) {
-    return null
+    return <div></div>
   }
 
   // get customer if logged in
